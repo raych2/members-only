@@ -4,4 +4,12 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav
+      h1
+        a.nav-logo(href='/') Members Only
+      ul.nav-links-list
+        li
+          a.nav-link(href='/sign-up') Sign Up
+        li
+          a.nav-link(href='/log-in') Log In
     block content
