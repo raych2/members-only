@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .signup-form
+    h1= title
+    form(method='POST', action='')
+      div
+        label(for='firstName') First Name:
+        input#firstName(type='text', name='firstName', required)
+      div
+        label(for='lastName') Last Name:
+        input#lastName(type='text', name='lastName', required)
+      div
+        label(for='username') Username:
+        input#username(type='text', name='username', required)
+      div
+        label(for='password') Password:
+        input#password(type='text', name='password', required)
+      div
+        label(for='passwordConfirmation') Confirm Password:
+        input#passwordConfirmation(
+          type='text',
+          name='passwordConfirmation',
+          required
+        ) 
+
+      .form-buttons
+        input.submit(type='submit', value='Submit')
+        button.back(type='button', onclick='location.href=\'/\'') Back to Home Page
+
+    if errors
+      ul
+        each error in errors
+          li!= error.msg
