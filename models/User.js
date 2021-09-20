@@ -6,8 +6,8 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true, maxLength: 100 },
   lastName: { type: String, required: true, maxLength: 100 },
   username: { type: String, required: true, maxLength: 50 },
-  password: { type: String, required: true, maxLength: 50 },
-  passwordConfirmation: { type: String, required: true, maxLength: 50 },
+  password: { type: String, required: true, maxLength: 500 },
+  passwordConfirmation: { type: String, required: true, maxLength: 500 },
   membershipStatus: { type: String, maxLength: 20 },
   admin: { type: Boolean },
 })
