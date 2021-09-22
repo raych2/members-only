@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .login-form
+    h1= title
+    form(method='POST', action='/login')
+      div
+        label(for='username') Username:
+        input#username(type='text', name='username', required)
+      div
+        label(for='password') Password:
+        input#password(type='text', name='password', required)
+        .form-buttons
+        input.submit(type='submit', value='Submit')
+        button.back(type='button', onclick='location.href=\'/\'') Back to Home Page
+
+    if errors
+      ul
+        each error in errors
+          li!= error.msg
