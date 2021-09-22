@@ -1,12 +1,12 @@
-const User = require('../models/User')
-const Post = require('../models/Post')
-const { body, validationResult } = require('express-validator')
-const bcrypt = require('bcryptjs')
+const User = require('../models/User');
+const Post = require('../models/Post');
+const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 // Display User sign up form on GET.
 exports.user_sign_up_get = function (req, res) {
-  res.render('signUpForm', { title: 'Sign Up' })
-}
+  res.render('signUpForm', { title: 'Sign Up' });
+};
 
 // Handle User sign up on POST.
 exports.user_sign_up_post = [
@@ -24,14 +24,14 @@ exports.user_sign_up_post = [
     .escape(),
 
   (req, res, next) => {
-    const errors = validationResult(req)
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render('signUpForm', {
         title: 'Sign Up',
         user: req.body,
         errors: errors.array(),
-      })
-      return
+      });
+      return;
     } else {
       bcrypt.hash(String(req.body.password), 10, (err, hashedPassword) => {
         const user = new User({
@@ -39,15 +39,16 @@ exports.user_sign_up_post = [
           lastName: req.body.lastName,
           username: req.body.username,
           password: hashedPassword,
-          passwordConfirmation: hashedPassword,
-        })
+          member: false,
+          admin: false,
+        });
         user.save(function (err) {
           if (err) {
-            return next(err)
+            return next(err);
           }
-          res.render('index', {user: user});
-        })
-      })
+          res.redirect('/');
+        });
+      });
     }
   },
-]
+];
