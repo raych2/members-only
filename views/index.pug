@@ -12,9 +12,14 @@ block content
           a.nav-link(href='/login') Log In
       else
         li
+          a.nav-link(href='/register') Member Registration
+        li
           a.nav-link(href='/logout') Log Out
   .welcome 
-    if user
-      h1 Welcome #{ user.username }!
-    else
+    if !user
       h1 Please sign up or log in
+    else if user.member
+      h1 Hi #{ user.username }!
+      h2 Check out the latest posts...
+    else
+      h1 Welcome #{ user.username }
