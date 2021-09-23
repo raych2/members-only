@@ -60,7 +60,12 @@ exports.user_login_get = function (req, res) {
 };
 
 // Handle User login form on POST.
-exports.user_login_post = passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/"
+exports.user_login_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/',
 });
+
+exports.user_logout_get = function (req, res) {
+  req.logout();
+  res.redirect('/');
+};
