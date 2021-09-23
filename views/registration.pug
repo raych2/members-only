@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .registration-form
+    h1= title
+    form(method='POST', action='')
+      div
+        label(for='membershipCode') Enter membership code:
+        input#membershipCode(type='text', name='membershipCode', required)
+        .form-buttons
+        input.submit(type='submit', value='Submit')
+        button.back(type='button', onclick='location.href=\'/\'') Back to Home Page
+
+    if errors
+      ul
+        each error in errors
+          li!= error.msg
