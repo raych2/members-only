@@ -3,13 +3,12 @@ const Post = require('../models/Post');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const dotenv = require('dotenv').config();
 
-// Display User sign up form on GET.
 exports.user_sign_up_get = function (req, res) {
   res.render('signUpForm', { title: 'Sign Up' });
 };
 
-// Handle User sign up on POST.
 exports.user_sign_up_post = [
   body('firstName', 'First name required').trim().isLength({ min: 1 }).escape(),
   body('lastName', 'Last name required').trim().isLength({ min: 1 }).escape(),
@@ -54,12 +53,10 @@ exports.user_sign_up_post = [
   },
 ];
 
-// Display User login form on GET.
 exports.user_login_get = function (req, res) {
   res.render('loginForm', { title: 'Log In' });
 };
 
-// Handle User login form on POST.
 exports.user_login_post = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/',
@@ -69,3 +66,40 @@ exports.user_logout_get = function (req, res) {
   req.logout();
   res.redirect('/');
 };
+
+exports.user_registration_get = function (req, res) {
+  res.render('registration', { title: 'Become a Member' });
+};
+
+exports.user_registration_post = [
+  body('membershipCode', 'Incorrect membership code entered')
+    .trim()
+    .isLength({ min: 1 })
+    .custom((value) => value === process.env.MEMBER_CODE)
+    .escape(),
+
+  (req, res, next) => {
+    const currentUser = req.user;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('registration', {
+        title: 'Become a member',
+        user: req.body,
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      User.findByIdAndUpdate(
+        currentUser.id,
+        { $set: { member: true } },
+        { new: true },
+        function (err, user) {
+          if (err) {
+            return next(err);
+          }
+          res.render('index', { user: currentUser });
+        }
+      );
+    }
+  },
+];
