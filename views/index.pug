@@ -12,6 +12,9 @@ block content
           a.nav-link(href='/login') Log In
       else
         li
+          a.nav-link(href='/create-post', aria-labelledby='Create Post')
+            i.fas.fa-plus
+        li
           a.nav-link(href='/register') Member Registration
         li
           a.nav-link(href='/logout') Log Out
