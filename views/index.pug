@@ -1,7 +1,20 @@
 extends layout
 
 block content
-  if user
-    h1 Welcome #{user.username}!
-  else
-    h1 Please log in
+  nav
+    h1
+      a.nav-logo(href='/') Members Only
+    ul.nav-links-list
+      if !user
+        li
+          a.nav-link(href='/sign-up') Sign Up
+        li
+          a.nav-link(href='/login') Log In
+      else
+        li
+          a.nav-link(href='/logout') Log Out
+  .welcome 
+    if user
+      h1 Welcome #{ user.username }!
+    else
+      h1 Please sign up or log in
