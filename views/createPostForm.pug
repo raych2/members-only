@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .create-post-form
+    h1= title
+    form(method='POST', action='')
+      div
+        label(for='title') Title:
+        input#title(type='text', name='title', required)
+      div
+        label(for='message') Message:
+        textarea#message(
+          name='message',
+          rows='5',
+          cols='33',
+          maxlength='500',
+          required
+        )
+      .form-buttons
+        input.submit(type='submit', value='Submit')
+        button.back(type='button', onclick='location.href=\'/\'') Back to Home Page
+
+    if errors
+      ul
+        each error in errors
+          li!= error.msg
