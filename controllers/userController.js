@@ -1,9 +1,7 @@
 const User = require('../models/User');
-const Post = require('../models/Post');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const dotenv = require('dotenv').config();
 
 exports.user_sign_up_get = function (req, res) {
   res.render('signUpForm', { title: 'Sign Up' });
@@ -97,7 +95,7 @@ exports.user_registration_post = [
           if (err) {
             return next(err);
           }
-          res.render('index', { user: currentUser });
+          res.redirect('/');
         }
       );
     }
