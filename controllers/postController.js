@@ -1,6 +1,17 @@
 const Post = require('../models/Post');
 const { body, validationResult } = require('express-validator');
 
+exports.post_list = function (req, res) {
+  Post.find({})
+    .populate('user')
+    .exec(function (err, list_posts) {
+      if (err) {
+        return next(err);
+      }
+      res.render('index', { post_list: list_posts, user: req.user });
+    });
+};
+
 exports.post_create_get = (req, res, next) => {
   res.render('createPostForm', { title: 'Create a Post' });
 };
