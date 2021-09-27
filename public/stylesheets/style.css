@@ -37,6 +37,9 @@ nav {
   margin: 20px auto;
   text-align: center;
 }
+.welcome-message {
+  margin-bottom: 20px;
+}
 .signup-form,
 .login-form,
 .registration-form,
@@ -95,4 +98,37 @@ button,
   border-color: #000;
   border-radius: 3px;
   font: 100 1rem 'Noto Sans JP', sans-serif;
+}
+.post-display {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-around;
+}
+.post-section {
+  height: auto;
+  width: 50vw;
+  margin: 10px 0;
+  padding: 20px;
+  background: #cfdbd5;
+  border-radius: 20px;
+}
+.post-text {
+  max-width: 95%;
+  text-align: left;
+}
+#postTitle,
+#postMessage {
+  margin: 10px auto;
+}
+hr {
+  margin: 10px auto;
+  border: none;
+  border-top: 1px solid #000;
+}
+.post-creation {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 auto;
 }

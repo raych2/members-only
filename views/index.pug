@@ -20,9 +20,41 @@ block content
           a.nav-link(href='/logout') Log Out
   .welcome 
     if !user
-      h1 Please sign up or log in
+      h1.welcome-message Please sign up or log in
+      .post-display 
+        each post in post_list
+          .post-section
+            .post-text
+              h2#postTitle #{ post.title }
+              p#postMessage #{ post.message }
+            hr 
+            .post-creation
+              p Anonymous
+              p #{ post.postDate }
     else if user.member
       h1 Hi #{ user.username }!
-      h2 Check out the latest posts...
+      h2.welcome-message Check out the latest posts...
+      .post-display 
+        each post in post_list
+          .post-section
+            .post-text
+              h2#postTitle #{ post.title }
+              p#postMessage #{ post.message }
+            hr 
+            .post-creation
+              p #{ post.user.fullName } • @#{ post.user.username }
+              p #{ post.postDate }
+
     else
       h1 Welcome #{ user.username }
+      h2.welcome-message Check out the latest posts...
+      .post-display 
+        each post in post_list
+          .post-section
+            .post-text
+              h2#postTitle #{ post.title }
+              p#postMessage #{ post.message }
+            hr 
+            .post-creation
+              p Anonymous
+              p #{ post.postDate }
