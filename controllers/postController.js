@@ -47,7 +47,6 @@ exports.post_create_post = [
         if (err) {
           return next(err);
         }
-        console.log(post.user.username);
         res.redirect('/');
       });
     }
