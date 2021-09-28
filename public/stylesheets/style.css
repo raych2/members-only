@@ -43,7 +43,8 @@ nav {
 .signup-form,
 .login-form,
 .registration-form,
-.create-post-form {
+.create-post-form,
+.admin-form {
   margin: 50px auto 0 auto;
   display: flex;
   flex-flow: column wrap;
@@ -66,7 +67,8 @@ textarea {
 #password,
 #passwordConfirmation,
 #membershipCode,
-#title {
+#title,
+#adminCode {
   display: block;
   width: 100%;
   height: 40px;
