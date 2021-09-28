@@ -17,6 +17,9 @@ router.get('/logout', user_controller.user_logout_get);
 router.get('/register', user_controller.user_registration_get);
 router.post('/register', user_controller.user_registration_post);
 
+router.get('/become-admin', user_controller.user_admin_get);
+router.post('/become-admin', user_controller.user_admin_post);
+
 router.get('/create-post', post_controller.post_create_get);
 router.post('/create-post', post_controller.post_create_post);
 

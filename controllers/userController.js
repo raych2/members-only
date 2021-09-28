@@ -101,3 +101,40 @@ exports.user_registration_post = [
     }
   },
 ];
+
+exports.user_admin_get = function (req, res) {
+  res.render('admin', { title: 'Become an Admin' });
+};
+
+exports.user_admin_post = [
+  body('adminCode', 'Incorrect admin code entered')
+    .trim()
+    .isLength({ min: 1 })
+    .custom((value) => value === process.env.ADMIN_CODE)
+    .escape(),
+
+  (req, res, next) => {
+    const currentUser = req.user;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('admin', {
+        title: 'Become an Admin',
+        user: req.body,
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      User.findByIdAndUpdate(
+        currentUser.id,
+        { $set: { admin: true } },
+        { new: true },
+        function (err, user) {
+          if (err) {
+            return next(err);
+          }
+          res.redirect('/');
+        }
+      );
+    }
+  },
+];
