@@ -25,8 +25,8 @@ block content
         each post in post_list
           .post-section
             .post-text
-              h2#postTitle #{ post.title }
-              p#postMessage #{ post.message }
+              h2#postTitle !{ post.title }
+              p#postMessage !{ post.message }
             hr 
             .post-creation
               p Anonymous
@@ -38,8 +38,8 @@ block content
         each post in post_list
           .post-section
             .post-text
-              h2#postTitle #{ post.title }
-              p#postMessage #{ post.message }
+              h2#postTitle !{ post.title }
+              p#postMessage !{ post.message }
             hr 
             .post-creation
               p #{ post.user.fullName } • @#{ post.user.username }
@@ -52,8 +52,8 @@ block content
         each post in post_list
           .post-section
             .post-text
-              h2#postTitle #{ post.title }
-              p#postMessage #{ post.message }
+              h2#postTitle !{ post.title }
+              p#postMessage !{ post.message }
             hr 
             .post-creation
               p Anonymous
