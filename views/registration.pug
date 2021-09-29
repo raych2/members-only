@@ -6,7 +6,12 @@ block content
     form(method='POST', action='')
       div
         label(for='membershipCode') Enter membership code:
-        input#membershipCode(type='text', name='membershipCode', required)
+        input#membershipCode(
+          type='password',
+          name='membershipCode',
+          value=undefined === user ? "" : user.membershipCode,
+          required
+        )
         .form-buttons
         input.submit(type='submit', value='Submit')
         button.back(type='button', onclick='location.href=\'/\'') Back to Home Page

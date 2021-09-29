@@ -6,7 +6,12 @@ block content
     form(method='POST', action='')
       div
         label(for='adminCode') Enter admin code:
-        input#adminCode(type='text', name='adminCode', required)
+        input#adminCode(
+          type='password',
+          name='adminCode',
+          value=undefined === user ? "" : user.adminCode,
+          required
+        )
         .form-buttons
         input.submit(type='submit', value='Submit')
         button.back(type='button', onclick='location.href=\'/\'') Back to Home Page

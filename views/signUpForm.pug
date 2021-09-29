@@ -31,7 +31,7 @@ block content
       div
         label(for='password') Password:
         input#password(
-          type='text',
+          type='password',
           name='password',
           value=undefined === user ? "" : user.password,
           required
@@ -39,7 +39,7 @@ block content
       div
         label(for='passwordConfirmation') Confirm Password:
         input#passwordConfirmation(
-          type='text',
+          type='password',
           name='passwordConfirmation',
           value=undefined === user ? "" : user.password,
           required
