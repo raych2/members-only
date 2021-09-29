@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 exports.user_sign_up_get = function (req, res) {
-  res.render('signUpForm', { title: 'Sign Up' });
+  res.render('signUpForm', { title: 'Sign up' });
 };
 
 exports.user_sign_up_post = [
@@ -37,7 +37,7 @@ exports.user_sign_up_post = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render('signUpForm', {
-        title: 'Sign Up',
+        title: 'Sign up',
         user: req.body,
         errors: errors.array(),
       });
@@ -64,7 +64,7 @@ exports.user_sign_up_post = [
 ];
 
 exports.user_login_get = function (req, res) {
-  res.render('loginForm', { title: 'Log In' });
+  res.render('loginForm', { title: 'Log in' });
 };
 
 exports.user_login_post = passport.authenticate('local', {
@@ -93,7 +93,7 @@ exports.user_registration_post = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render('registration', {
-        title: 'Become a member',
+        title: 'Become a Member',
         user: req.body,
         errors: errors.array(),
       });
