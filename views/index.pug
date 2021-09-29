@@ -43,8 +43,8 @@ block content
               if user.admin
                 .post-header
                   h2 !{ post.title }
-                  a(href=post._id + "/delete", aria-labelledby='Delete Post')
-                    i.far.fa-trash-alt
+                  a.delete-icon(href=post._id + "/delete", aria-labelledby='Delete Post')
+                    i.fas.fa-trash-alt.fa-lg
                 p#postMessage !{ post.message }
               else
                 h2#postTitle !{ post.title }
