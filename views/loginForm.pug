@@ -1,6 +1,14 @@
 extends layout
 
 block content
+  nav
+    h1
+      a.nav-logo(href='/') Members Only
+    ul.nav-links-list
+      li
+        a.nav-link(href='/sign-up') Sign up
+      li
+        a.nav-link(href='/login') Log in
   .login-form
     h1= title
     form(method='POST', action='/login')

@@ -1,6 +1,14 @@
 extends layout
 
 block content
+  nav
+    h1
+      a.nav-logo(href='/') Members Only
+    ul.nav-links-list
+      li
+        a.nav-link(href='/sign-up') Sign up
+      li
+        a.nav-link(href='/login') Log in
   .signup-form
     h1= title
     form(method='POST', action='')
@@ -52,4 +60,4 @@ block content
     if errors
       ul
       each error in errors
-          li.error!= error.msg
+        li.error!= error.msg

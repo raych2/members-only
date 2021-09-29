@@ -1,6 +1,12 @@
 extends layout
 
 block content
+  nav
+    h1
+      a.nav-logo(href='/') Members Only
+    ul.form-nav-links-list
+      li
+        a.nav-link(href='/logout') Log out
   .admin-form
     h1= title
     form(method='POST', action='')

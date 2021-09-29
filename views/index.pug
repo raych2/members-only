@@ -10,14 +10,26 @@ block content
           a.nav-link(href='/sign-up') Sign up
         li
           a.nav-link(href='/login') Log in
-      else
+      else if user && !user.member
         li
           a.nav-link(href='/create-post', aria-labelledby='Create Post')
             i.fas.fa-plus
         li
           a.nav-link(href='/register') Member
         li
+          a.nav-link(href='/logout') Log out
+      else if user.member && !user.admin
+        li
+          a.nav-link(href='/create-post', aria-labelledby='Create Post')
+            i.fas.fa-plus
+        li
           a.nav-link(href='/become-admin') Admin
+        li
+          a.nav-link(href='/logout') Log out
+      else if user.admin
+        li
+          a.nav-link(href='/create-post', aria-labelledby='Create Post')
+            i.fas.fa-plus
         li
           a.nav-link(href='/logout') Log out
   .welcome 
@@ -43,7 +55,10 @@ block content
               if user.admin
                 .post-header
                   h2 !{ post.title }
-                  a.delete-icon(href=post._id + "/delete", aria-labelledby='Delete Post')
+                  a.delete-icon(
+                    href=post._id + "/delete",
+                    aria-labelledby='Delete Post'
+                  )
                     i.fas.fa-trash-alt.fa-lg
                 p#postMessage !{ post.message }
               else
