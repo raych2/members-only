@@ -7,17 +7,19 @@ block content
     ul.nav-links-list
       if !user
         li
-          a.nav-link(href='/sign-up') Sign Up
+          a.nav-link(href='/sign-up') Sign up
         li
-          a.nav-link(href='/login') Log In
+          a.nav-link(href='/login') Log in
       else
         li
           a.nav-link(href='/create-post', aria-labelledby='Create Post')
             i.fas.fa-plus
         li
-          a.nav-link(href='/register') Member Registration
+          a.nav-link(href='/register') Member
         li
-          a.nav-link(href='/logout') Log Out
+          a.nav-link(href='/become-admin') Admin
+        li
+          a.nav-link(href='/logout') Log out
   .welcome 
     if !user
       h1.welcome-message Please sign up or log in
