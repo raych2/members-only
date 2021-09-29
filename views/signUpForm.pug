@@ -51,5 +51,5 @@ block content
 
     if errors
       ul
-        each error in errors
-          li!= error.msg
+      each error in errors
+          li.error!= error.msg

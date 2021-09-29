@@ -144,3 +144,6 @@ hr {
 .delete-icon {
   color: #000;
 }
+.error{
+  color: #ff0000;
+}
