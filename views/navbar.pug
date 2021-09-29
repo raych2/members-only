@@ -1,13 +1,14 @@
 nav
   h1
     a.nav-logo(href='/') Members Only
-  ul.nav-links-list
-    if !user
+  if !user
+    ul.form-nav-links-list
       li
         a.nav-link(href='/sign-up') Sign up
       li
         a.nav-link(href='/login') Log in
-    else if user && !user.member
+  else if user && !user.member
+    ul.nav-links-list
       li
         a.nav-link(href='/create-post', aria-labelledby='Create Post')
           i.fas.fa-plus
@@ -15,7 +16,8 @@ nav
         a.nav-link(href='/register') Member
       li
         a.nav-link(href='/logout') Log out
-    else if user.member && !user.admin
+  else if user.member && !user.admin
+    ul.nav-links-list
       li
         a.nav-link(href='/create-post', aria-labelledby='Create Post')
           i.fas.fa-plus
@@ -23,7 +25,8 @@ nav
         a.nav-link(href='/become-admin') Admin
       li
         a.nav-link(href='/logout') Log out
-    else if user.admin
+  else if user.admin
+    ul.form-nav-links-list
       li
         a.nav-link(href='/create-post', aria-labelledby='Create Post')
           i.fas.fa-plus
