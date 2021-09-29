@@ -115,7 +115,7 @@ button,
   border-radius: 20px;
 }
 .post-text {
-  max-width: 95%;
+  max-width: 100%;
   text-align: left;
 }
 #postTitle,
@@ -126,6 +126,13 @@ hr {
   margin: 10px auto;
   border: none;
   border-top: 1px solid #000;
+}
+.post-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 10px auto;
 }
 .post-creation {
   display: flex;

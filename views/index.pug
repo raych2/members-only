@@ -38,8 +38,15 @@ block content
         each post in post_list
           .post-section
             .post-text
-              h2#postTitle !{ post.title }
-              p#postMessage !{ post.message }
+              if user.admin
+                .post-header
+                  h2 !{ post.title }
+                  a(href=post._id + "/delete", aria-labelledby='Delete Post')
+                    i.far.fa-trash-alt
+                p#postMessage !{ post.message }
+              else
+                h2#postTitle !{ post.title }
+                p#postMessage !{ post.message }
             hr 
             .post-creation
               p #{ post.user.fullName } • @#{ post.user.username }
