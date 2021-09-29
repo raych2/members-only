@@ -52,3 +52,12 @@ exports.post_create_post = [
     }
   },
 ];
+
+exports.post_delete = (req, res, next) => {
+  Post.findByIdAndRemove(req.params.id, function deletePost(err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+};
