@@ -10,7 +10,19 @@ exports.user_sign_up_get = function (req, res) {
 exports.user_sign_up_post = [
   body('firstName', 'First name required').trim().isLength({ min: 1 }).escape(),
   body('lastName', 'Last name required').trim().isLength({ min: 1 }).escape(),
-  body('username', 'Username required').trim().isLength({ min: 1 }).escape(),
+  body('username', 'Username required')
+    .trim()
+    .isLength({ min: 1 })
+    .custom((value) => {
+      return User.find({ username: value }).then((user) => {
+        if (user.length > 0) {
+          return Promise.reject(
+            'Username already in use. Please choose another username.'
+          );
+        }
+      });
+    })
+    .escape(),
   body('password', 'Password required').trim().isLength({ min: 1 }).escape(),
   body(
     'passwordConfirmation',

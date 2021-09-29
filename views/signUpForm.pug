@@ -6,21 +6,42 @@ block content
     form(method='POST', action='')
       div
         label(for='firstName') First Name:
-        input#firstName(type='text', name='firstName', required)
+        input#firstName(
+          type='text',
+          name='firstName',
+          value=undefined === user ? "" : user.firstName,
+          required
+        )
       div
         label(for='lastName') Last Name:
-        input#lastName(type='text', name='lastName', required)
+        input#lastName(
+          type='text',
+          name='lastName',
+          value=undefined === user ? "" : user.lastName,
+          required
+        )
       div
         label(for='username') Username:
-        input#username(type='text', name='username', required)
+        input#username(
+          type='text',
+          name='username',
+          value=undefined === user ? "" : user.username,
+          required
+        )
       div
         label(for='password') Password:
-        input#password(type='text', name='password', required)
+        input#password(
+          type='text',
+          name='password',
+          value=undefined === user ? "" : user.password,
+          required
+        )
       div
         label(for='passwordConfirmation') Confirm Password:
         input#passwordConfirmation(
           type='text',
           name='passwordConfirmation',
+          value=undefined === user ? "" : user.password,
           required
         ) 
 
