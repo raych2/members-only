@@ -13,7 +13,7 @@ exports.post_list = function (req, res) {
 };
 
 exports.post_create_get = (req, res, next) => {
-  res.render('createPostForm', { title: 'Create a Post' });
+  res.render('createPostForm', { title: 'Create a Post', user: req.user });
 };
 
 exports.post_create_post = [

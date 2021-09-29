@@ -78,7 +78,7 @@ exports.user_logout_get = function (req, res) {
 };
 
 exports.user_registration_get = function (req, res) {
-  res.render('registration', { title: 'Become a Member' });
+  res.render('registration', { title: 'Become a Member', user: req.user });
 };
 
 exports.user_registration_post = [
@@ -115,7 +115,7 @@ exports.user_registration_post = [
 ];
 
 exports.user_admin_get = function (req, res) {
-  res.render('admin', { title: 'Become an Admin' });
+  res.render('admin', { title: 'Become an Admin', user: req.user });
 };
 
 exports.user_admin_post = [
