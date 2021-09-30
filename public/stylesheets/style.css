@@ -197,4 +197,13 @@ hr {
   .navbar-links.active {
     display: flex;
   }
+  form {
+    width: 90%;
+  }
+  .post-section {
+    width: 90%;
+  }
+  .post-creation {
+    flex-direction: column;
+  }
 }
