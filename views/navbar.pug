@@ -1,34 +1,40 @@
 nav
   h1
     a.nav-logo(href='/') Members Only
-  if !user
-    ul.form-nav-links-list
-      li
-        a.nav-link(href='/sign-up') Sign up
-      li
-        a.nav-link(href='/login') Log in
-  else if user && !user.member
-    ul.nav-links-list
-      li
-        a.nav-link(href='/create-post', aria-labelledby='Create Post')
-          i.fas.fa-plus
-      li
-        a.nav-link(href='/register') Member
-      li
-        a.nav-link(href='/logout') Log out
-  else if user.member && !user.admin
-    ul.nav-links-list
-      li
-        a.nav-link(href='/create-post', aria-labelledby='Create Post')
-          i.fas.fa-plus
-      li
-        a.nav-link(href='/become-admin') Admin
-      li
-        a.nav-link(href='/logout') Log out
-  else if user.admin
-    ul.form-nav-links-list
-      li
-        a.nav-link(href='/create-post', aria-labelledby='Create Post')
-          i.fas.fa-plus
-      li
-        a.nav-link(href='/logout') Log out
+  a.toggle-btn(href='#')
+    span.bar 
+    span.bar 
+    span.bar
+  .navbar-links 
+    if !user
+      ul
+        li
+          a.nav-link(href='/sign-up') Sign up
+        li
+          a.nav-link(href='/login') Log in
+    else if user && !user.member
+      ul
+        li
+          a.nav-link(href='/create-post', aria-labelledby='Create Post')
+            i.fas.fa-plus
+        li
+          a.nav-link(href='/register') Member
+        li
+          a.nav-link(href='/logout') Log out
+    else if user.member && !user.admin
+      ul
+        li
+          a.nav-link(href='/create-post', aria-labelledby='Create Post')
+            i.fas.fa-plus
+        li
+          a.nav-link(href='/become-admin') Admin
+        li
+          a.nav-link(href='/logout') Log out
+    else if user.admin
+      ul
+        li
+          a.nav-link(href='/create-post', aria-labelledby='Create Post')
+            i.fas.fa-plus
+        li
+          a.nav-link(href='/logout') Log out
+  
