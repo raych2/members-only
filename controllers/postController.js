@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 
 exports.post_list = function (req, res) {
   Post.find({})
+    .sort('-createdAt')
     .populate('user')
     .exec(function (err, list_posts) {
       if (err) {
