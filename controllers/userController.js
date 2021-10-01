@@ -64,12 +64,14 @@ exports.user_sign_up_post = [
 ];
 
 exports.user_login_get = function (req, res) {
-  res.render('loginForm', { title: 'Log in' });
+  const message = req.flash();
+  res.render('loginForm', { title: 'Log in', errors: message });
 };
 
 exports.user_login_post = passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true,
 });
 
 exports.user_logout_get = function (req, res) {

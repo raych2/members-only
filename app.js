@@ -8,6 +8,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const flash = require('connect-flash');
 const User = require('./models/User');
 
 const indexRouter = require('./routes/index');
@@ -40,7 +41,6 @@ passport.use(
           return done(null, false, { message: 'Incorrect password' });
         }
       });
-      return done(null, user);
     });
   })
 );
@@ -66,6 +66,8 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cookieParser());
+app.use(flash());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -76,7 +78,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
