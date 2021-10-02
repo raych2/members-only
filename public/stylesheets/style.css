@@ -83,6 +83,9 @@ textarea {
   background-color: #e8eddf;
   border-radius: 3px;
   border: 1px solid #e8eddf;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 #firstName,
 #lastName,
